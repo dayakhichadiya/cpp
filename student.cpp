@@ -17,7 +17,7 @@ public:
     {
         cout << "enter the student admin number:" << endl;
         cin >> adno;
-        cout << "enter the student name:";
+        cout << "enter the student name: ";
         cin >> name;
 
         cout << "Enter marks in Maths: ";
