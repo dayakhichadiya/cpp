@@ -18,15 +18,14 @@ public:
         cin >> name;
         cout << "Enter the five subject marks :" << endl;
         for(int i=0;i<5;i++){
-            cout<<marks[i];
+            cin>>marks[i];
         }   
     }
     void display()
     {
         cout << "admission number is :" <<adno<< endl;
         cout << "name of student is :" <<name<< endl;
-        cout << "marks in each subjects are :" <<marks<< endl;
-        // cout<<"the total marks is:"<<total<<endl;
+        cout << "marks in each subjects are :" <<marks[0]<<"\t"<<marks[1]<<"\t"<<marks[2]<<"\t"<<marks[3]<<"\t"<<marks[4]<< endl;
         cout << "average is: " << getavg(average) << endl;
         } 
 };
