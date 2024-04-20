@@ -9,9 +9,14 @@ void sum(float pie,int r1,int r2,int height )
 {
     cout << pie * r1 *  r2 * height  << endl;
 }
-void sum(int s1, int s2, int s3)
+void sum(int s1, int s2)
 {
-    cout << s1 * s2 * s3 << endl;
+    cout << s1 * s2 * 3 << endl;
+}
+void sum(int a)
+{
+    cout<<a*a*a;
+
 }
 
 int main()
@@ -22,6 +27,9 @@ int main()
     sum(3.14,4,4,2);
     cout<<"volume of square: "<<endl;
     sum(5,9,2);
+    cout<<"volume of cube :"<<endl;
+    sum(4);
+
     
     
     return 0;
