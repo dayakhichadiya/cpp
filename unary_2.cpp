@@ -27,12 +27,11 @@ void Unary ::operator++(int) {
     y++;
     x=-x;
     y=-y;
-
 }
 
 int main(){
     Unary c;
-    c.getdata(5,8);
+    c.getdata(6,7);
     c.showdata();
     c++;
     c.showdata();

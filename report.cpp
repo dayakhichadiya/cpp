@@ -9,7 +9,7 @@ class Report
     float average;
     float getavg(float total);
 
-public:
+    public:
     void readinfo()
     {
         cout << "enter admission number :" << endl;

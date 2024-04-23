@@ -14,7 +14,7 @@ void setdata(int x,int y){
 void display(){
     cout<<"Value of a is "<<a<<endl;
     cout<<"Value of b is "<<b<<endl;
-}
+}                                                                                     
 
 Operator operator*(Operator c){
     Operator d;
