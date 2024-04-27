@@ -23,7 +23,6 @@ class Bonus : public Employe
 {
 public:
     int plus ;
-    int total;
     void  bonus(){
         cout<<"enter the bonus :"<<endl;
         cin>>plus;
