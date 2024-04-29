@@ -14,6 +14,7 @@ public:
         cout << "Enter the Name : " << endl;
         cin >> name;
     }
+    
     void detail(){
         cout<<"Roll No. = "<<rollno<<endl;
         cout<<"Name = "<<name<<endl;
@@ -46,9 +47,7 @@ int marks;
      void markprint(){ 
         
             cout << "total marks is =" <<total << endl; 
-        } 
-
-
+        }
 };
 class Result : public Student, public base
 {
