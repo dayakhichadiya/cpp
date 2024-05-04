@@ -1,89 +1,160 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
-class Account{
-    int acc_no;
-    char name[30];
-    int deposite;
-    char type[10];
-    int amount;
-   
+ 
+double rate=3.0;
 
-    public :
+struct Customer {
+    int accountNumber;
+    string name;
+    double balance;
+    double loan;
+};
 
-    void getdetail();
-    void showdata();
-    void dep();
-    void withdraw();
-    int retacc_no();
-    char retype ();
-    int retdeposite();
-    void printamount();
+
+ struct Customer cus;
+
+
+void createAccount() {
     
-   
-    };
-
-void Account :: getdetail(){
-
-cout<<"Enter the account number :"<<endl;
-cin>>acc_no;
-cout<<"Enter the accountant name :"<<endl;
-cin>>name;
-cout<<"Enter the type of the account : [saving  or  current]"<<endl;
-cin>>type;
-cout<<"Enter the initial amount (for saving >500  or current >1000 )"<<endl;
-cin>>deposite;
-}
-
-void Account :: showdata(){
-    cout<<"Account number is :"<<acc_no<<endl;
-    cout<<"Name of the accountant is :"<<name<<endl;
-    cout<<"Type of account :"<<type<<endl;
-    cout<<"The amount is : "<<deposite<<endl;
+        cout << "Enter customer name: ";
+        cin >> cus.name;
+        cout<<"Enter account number : ";
+        cin>>cus.accountNumber;
     
-}
+    cus.balance = 0;
+        cus.loan = 0;
+       
+        cout << "Account created successfully!  "<<endl; 
 
-void Account :: dep(){
-    cout<<"enter the amount to deposite :"<<endl;
-    cin>>amount;
-    deposite+=amount;
-}
-
-void Account :: withdraw(){
-    cout<<"enter the amount to withdraw :"<<endl;
-    cin>>amount;
-    deposite-=amount;
-}
-
-void Account :: printamount(){
-    cout<<"The Total balance is : "<<amount<<endl;
-}
-
-int Account :: retacc_no(){
-    return acc_no;
-}
-
-char Account :: retype(){
-    return type[10];
-}
-
-int Account :: retdeposite(){
-     return deposite;
 }
 
 
-int main(){
-     int user;
-    Account a1;
-    a1.getdetail();
-    a1.showdata();
-    a1.dep();
-    a1.withdraw();
-    switch(user){
-        case 1 :
+void deposit() {
+    int accountNumber;
+    double amount;
+    cout << "Enter account number: ";
+    cin >> accountNumber;
+     if (cus.accountNumber == accountNumber) {
+            cout << "Enter amount to deposit: ";
+            cin >> amount;
+            cus.balance += amount;
+            cout << "Deposit successful. New balance: " << cus.balance << endl;
+            return;
+     }else{
+    cout << "Customer not found!" << endl;
+     }
+}
 
+
+void withdraw() {
+    int accountNumber;
+    double amount;
+    cout << "Enter account number: ";
+    cin >> accountNumber;
+        if (cus.accountNumber == accountNumber) {
+            cout << "Enter amount to withdraw: ";
+            cin >> amount;
+            if (amount <= cus.balance) {
+                cus.balance -= amount;
+                cout << "Withdrawal successful. New balance: " << cus.balance << endl;
+            } }else {
+                cout << "Insufficient balance!" << endl;
+            }
+            return;
         
+    cout << "Customer not found!" << endl;
+}
 
 
+void takeLoan() {
+    int accountNumber;
+    float amount;
+    cout << "Enter account number: ";
+    cin >> accountNumber;
+    
+        if (cus.accountNumber == accountNumber) {
+        
+            cout <<"interest rate is 3.0 "<<endl;
+            cout << "Enter loan amount: ";
+            cin >> amount;
+            cus.loan += amount;
+           
+            float interest = 0;
+            if (amount <=50000){
+                interest += (amount*rate*0.5)/100;
+            }
+            else if (amount > 50000){
+                interest +=(amount*rate*1)/100;
+            }
+            else if (amount >=1500000 ){
+                interest +=(amount*rate*3)/100;
+            }
+            else{
+                cout<<"";
+            }
+            cus.loan += interest;
+            cout << "Loan taken successfully."<<endl;
+            cout<<" Total loan amount (including interest): " << cus.loan << endl;
+            return;
+        
     }
+    cout << "Customer not found!" << endl;
+}
+
+void displayInfo() {
+    int accountNumber;
+    cout << "Enter account number: ";
+    cin >> accountNumber;
+        if (cus.accountNumber == accountNumber) {
+            cout << "Account Number: " << cus.accountNumber << endl;
+            cout << "Name: " << cus.name << endl;
+            cout << "Balance: " << cus.balance << endl;
+            cout << "Loan with interest : " << cus.loan << endl;
+            return;
+        }
+    
+    cout << "Customer not found!" << endl;
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "\nBank Management System" << endl;
+        cout << "1. Create Account" << endl;
+        cout << "2. Deposit" << endl;
+        cout << "3. Withdraw" << endl;
+        cout << "4. Take Loan" << endl;
+        cout << "5. Display Information" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                createAccount();
+                break;
+            case 2:
+                deposit();
+                break;
+            case 3:
+                withdraw();
+                break;
+            case 4:
+                takeLoan();
+                break;
+            case 5:
+                displayInfo();
+                break;
+            case 6:
+                cout << "Exiting program. Thank you!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 6);
+
+    return 0;
 }
